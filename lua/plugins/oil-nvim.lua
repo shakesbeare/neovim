@@ -12,7 +12,7 @@ return {
 					require("oil").open()
 				end
 			end,
-			{ silent = true, noremap = true },
+			silent = true, noremap = true, desc = "Toggle File Tree"
 		},
 	},
 	opts = {

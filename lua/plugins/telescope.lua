@@ -8,20 +8,20 @@ return {
 		{
 			"<leader>pf",
 			"<cmd>Telescope find_files<CR>",
-			desc = "Fuzzy find all files",
-			{ silent = true, noremap = true },
+			desc = "Telescope: All Files",
+			silent = true, noremap = true,
 		},
 		{
 			"<leader>f",
 			"<cmd>Telescope git_files<CR>",
-			desc = "Fuzzy find git files",
-			{ silent = true, noremap = true },
+			desc = "Telescope: Git Files",
+			silent = true, noremap = true,
 		},
 		{
 			"<leader>sf",
 			"<cmd>Telescope live_grep<CR>",
-			desc = "Grep for input",
-			{ silent = true, noremap = true },
+			desc = "Telescope: Live Grep",
+			silent = true, noremap = true,
 		},
 	},
 	opts = {
