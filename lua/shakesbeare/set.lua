@@ -27,6 +27,7 @@ vim.opt.smartindent = true
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 88
 vim.opt.splitbelow = true
+vim.opt.splitright = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.swapfile = false
