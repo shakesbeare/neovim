@@ -5,7 +5,8 @@ return {
     opts = {
         preset = "helix",
         spec = {
-            { "<leader>l", group="LSP Actions"}
+            { "<leader>l", group="LSP Actions" },
+            { "<leader>q", group="Code Formatting" },
         }
     },
     keys = {

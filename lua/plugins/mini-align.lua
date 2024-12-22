@@ -1,5 +1,10 @@
 return {
     'echasnovski/mini.align',
     version = false,
-    opts = {},
+    opts = {
+        mappings = {
+            start = "<leader>qa",
+            start_with_preview = "<leader>qA",
+        }
+    },
 }
