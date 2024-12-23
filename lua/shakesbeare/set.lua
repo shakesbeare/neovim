@@ -5,6 +5,8 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
+vim.g.tabline_separator = "│"
+
 vim.g.mapleader = " "
 
 vim.opt.formatoptions:remove("o")
@@ -32,6 +34,10 @@ vim.opt.incsearch = true
 vim.opt.swapfile = false
 vim.opt.guicursor = ""
 vim.opt.laststatus = 3
+vim.opt.fillchars = { stlnc = "─" }
+vim.opt.colorcolumn = "88"
+vim.opt.wrap = false
+vim.opt.showtabline=2
 
 local homedir = os.getenv("HOME") or "C:/Users/berin"
 vim.opt.undodir = homedir .. "/.undodir"
@@ -47,9 +53,6 @@ if vim.fn.has("win32") == 1 then
         ]])
 end
 
--- vim.opt.colorcolumn = "88"
-
-vim.opt.wrap = false
 
 -- term colors
 vim.g.terminal_color_0 = '#0C0C0C'

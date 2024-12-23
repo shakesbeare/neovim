@@ -8,6 +8,21 @@ require("shakesbeare.set")
 -- 	end,
 -- })
 
+vim.api.nvim_create_autocmd({ "WinEnter", "WinResized" }, {
+	group = vim.api.nvim_create_augroup("set_tabline_offset", {}),
+	pattern = "*",
+	callback = function()
+		local wins = vim.api.nvim_list_wins()
+		for _, win in ipairs(wins) do
+			local buf = vim.api.nvim_win_get_buf(win)
+			if vim.bo[buf].filetype == "NvimTree" then
+				vim.g.tabline_tree_offset = vim.api.nvim_win_get_width(win)
+			end
+		end
+		print(vim.g.tabline_tree_offset)
+	end
+})
+
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("yank_highlight", {}),
 	pattern = "*",
