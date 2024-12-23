@@ -6,6 +6,27 @@ function extract_filenames(items)
 	return out
 end
 
+function reduce_path(f, max_length)
+	local components = {}
+	for component in f:gmatch("([^/\\]+)") do
+		table.insert(components, component)
+	end
+
+	local current_path = components[#components]
+	local path_length = #current_path
+
+	for i = #components - 1, 1, -1 do
+		if path_length + 3 + #components[i] > max_length then
+			current_path = "..." .. "/" .. current_path
+		else
+			current_path = components[i] .. "/" .. current_path
+			path_length = path_length + #components[i] + 1
+		end
+	end
+
+	return current_path
+end
+
 return {
 	"ThePrimeagen/harpoon",
 	branch = "harpoon2",
@@ -83,13 +104,24 @@ return {
 			local marked_files = extract_filenames(harpoon:list().items)
 			local cwd = vim.fn.getcwd()
 			local current_file = vim.api.nvim_buf_get_name(0):gsub("^" .. cwd .. "/", "")
+			local max_length = (vim.api.nvim_win_get_width(0) - (5 * #marked_files)) / #marked_files
 
 			for i, f in ipairs(marked_files) do
+				local display_path = reduce_path(f, max_length)
+
+				local entry = {}
 				if f == current_file then
-					f = string.upper(f)
+					table.insert(entry, " %#TablineActive#")
+				else
+					table.insert(entry, " %#TablineInactive#")
 				end
-				s = s .. " " .. i .. " " .. f .. " " .. vim.g.tabline_separator
+
+				table.insert(entry, 
+					string.format("%d %s %%#TablineInactive#%s", i, display_path, vim.g.tabline_separator))
+
+				s = s .. table.concat(entry)
 			end
+			s = s .. "%#TablineEnd#"
 
 			return s
 		end

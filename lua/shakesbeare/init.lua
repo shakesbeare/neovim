@@ -19,7 +19,6 @@ vim.api.nvim_create_autocmd({ "WinEnter", "WinResized" }, {
 				vim.g.tabline_tree_offset = vim.api.nvim_win_get_width(win)
 			end
 		end
-		print(vim.g.tabline_tree_offset)
 	end
 })
 
