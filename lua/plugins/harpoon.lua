@@ -104,9 +104,13 @@ return {
 			local marked_files = extract_filenames(harpoon:list().items)
 			local cwd = vim.fn.getcwd()
 			local current_file = vim.api.nvim_buf_get_name(0):gsub("^" .. cwd .. "/", "")
-			local max_length = (vim.api.nvim_win_get_width(0) - (5 * #marked_files)) / #marked_files
+			local max_length = (vim.api.nvim_win_get_width(0) - (5 * 4)) / 4
 
 			for i, f in ipairs(marked_files) do
+				if i > 4 then
+					break
+				end
+
 				local display_path = reduce_path(f, max_length)
 
 				local entry = {}

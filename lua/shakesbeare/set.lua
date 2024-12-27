@@ -35,7 +35,7 @@ vim.opt.swapfile = false
 vim.opt.guicursor = ""
 vim.opt.laststatus = 3
 vim.opt.fillchars = { stlnc = "─" }
-vim.opt.colorcolumn = "88"
+vim.opt.colorcolumn = "100"
 vim.opt.wrap = false
 vim.opt.showtabline=2
 
