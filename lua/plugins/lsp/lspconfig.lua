@@ -26,6 +26,29 @@ return {
 			capabilities = capabilities,
 			cmd = { "nc", "localhost", "6005" },
 		})
+		
+		require('lspconfig').nixd.setup({
+			cmd = { 'nixd' },
+			settings = {
+				nixd = {
+					nixpkgs = {
+						expr = "import <nixpkgs> { }",
+					},
+					formatting = {
+						command = { "alejandra" },
+					},
+					options = {
+						nixos = {
+							expr = '(builtins.getFlake "~/.dotfiles/flake.nix").nixosConfigurations.nixos-dt.options',
+						},
+						-- home_manager = {
+						-- 	expr = '(builtins.getFlake "~/.dotfiles/flake.nix").homeConfigurations.nixos-dt.options',
+						-- },
+					},
+
+				},
+			},
+		})
 
 		require('lspconfig')['hls'].setup {
 			filetypes = { 'haskell', 'lhaskell', 'cabal' },
