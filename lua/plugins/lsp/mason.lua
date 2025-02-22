@@ -54,6 +54,16 @@ return {
 						},
 					})
 				end,
+				['pico8_ls'] = function()
+					require('lspconfig').pico8_ls.setup({
+						capabilities = capabilities,
+						cmd = {
+							'pico8-ls',
+							'--stdio'
+						},
+						filetypes = { "p8", 'pico8', 'lua' },
+					})
+				end,
 				['omnisharp'] = function()
 					require('lspconfig')['omnisharp'].setup({
 						capabilites = capabilites,
